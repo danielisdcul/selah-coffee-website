@@ -37,7 +37,11 @@ const values = [
 function Brand({ footer = false }: { footer?: boolean }) {
   return (
     <span className={footer ? "brand brand--footer" : "brand"}>
-      {!footer && <img className="brand__mark" src="/selah-mark.svg" alt="" />}
+      <img
+        className="brand__mark"
+        src={footer ? "/selah-mark-light.svg" : "/selah-mark.svg"}
+        alt=""
+      />
       <span className="brand__lockup" aria-hidden="true">
         <span className="brand__name">SELAH</span>
         <span className="brand__sub">COFFEE</span>
@@ -60,6 +64,20 @@ export default function Home() {
           <a href="#shop">Shop</a>
           <a href="#visit">Visit</a>
         </nav>
+
+        <details className="mobile-menu">
+          <summary aria-label="Open navigation menu">
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </summary>
+          <nav className="mobile-menu__panel" aria-label="Mobile navigation">
+            <a href="#story">Our story</a>
+            <a href="#menu">Menu</a>
+            <a href="#shop">Shop</a>
+            <a href="#visit">Visit</a>
+          </nav>
+        </details>
       </header>
 
       <section className="hero" aria-labelledby="hero-title">
@@ -214,23 +232,25 @@ export default function Home() {
 
       <section className="shop" id="shop" aria-labelledby="shop-title">
         <div className="shop__copy">
-          <p className="eyebrow">Made here, with care</p>
-          <h2 id="shop-title">
-            Locally
-            <br />
-            crafted
-            <br />
-            artisan goods.
-          </h2>
-          <p>
-            Our shelves are shaped by the artists and makers in our community.
-            We partner with local creatives to offer handmade ceramics,
-            textiles, prints, and everyday goods—each one thoughtfully made and
-            chosen to bring a little more beauty to the daily ritual.
-            <br />
-            Every purchase celebrates independent craft and supports the people
-            who make our community more creative.
-          </p>
+          <div className="shop__text">
+            <p className="eyebrow">Made here, with care</p>
+            <h2 id="shop-title">
+              Locally
+              <br />
+              crafted
+              <br />
+              artisan goods.
+            </h2>
+            <p>
+              Our shelves are shaped by the artists and makers in our community.
+              We partner with local creatives to offer handmade ceramics,
+              textiles, prints, and everyday goods—each one thoughtfully made and
+              chosen to bring a little more beauty to the daily ritual.
+              <br />
+              Every purchase celebrates independent craft and supports the people
+              who make our community more creative.
+            </p>
+          </div>
 
           <div className="shop__actions">
             <a className="outline-button" href="#shop">

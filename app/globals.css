@@ -129,6 +129,10 @@ em {
   line-height: 19.5px;
 }
 
+.mobile-menu {
+  display: none;
+}
+
 .site-nav a,
 .footer-links a,
 .site-footer__bottom a {
@@ -551,7 +555,7 @@ em {
   letter-spacing: -3.52px;
 }
 
-.shop__copy > p {
+.shop__text > p {
   width: 420px;
   margin: 0;
   padding: 44px 0;
@@ -608,6 +612,10 @@ em {
   width: 438px;
   height: 126px;
   display: block;
+}
+
+.brand--footer .brand__mark {
+  display: none;
 }
 
 .brand--footer .brand__lockup {
@@ -678,7 +686,7 @@ em {
   .name-story__copy,
   .shop__image,
   .shop__copy,
-  .shop__copy > p {
+  .shop__text > p {
     width: 100%;
   }
 
@@ -801,162 +809,543 @@ em {
 
 @media (max-width: 620px) {
   :root {
-    --gutter: 24px;
+    --gutter: 30px;
   }
 
   .site-header {
-    height: 82px;
+    height: 58.792px;
+    padding: 0 18px;
+    justify-content: space-between;
+    border-bottom: 0;
   }
 
   .site-header > a {
-    left: 24px;
-    top: 11px;
+    left: 18px;
+    top: 8px;
   }
 
   .brand {
-    transform: scale(0.78);
-    transform-origin: left center;
+    width: 96.7px;
+    height: 42.792px;
+    gap: 4.029px;
+    transform: none;
+  }
+
+  .brand__mark {
+    width: 32.971px;
+    height: 42.792px;
+    flex-basis: 32.971px;
+  }
+
+  .brand__lockup {
+    width: 59.7px;
+    height: 27.721px;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .brand__name {
+    height: 11.516px;
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: -2px;
+  }
+
+  .brand__sub {
+    padding: 0 0 0 4.05px;
+    font-size: 7px;
+    line-height: 6.48px;
   }
 
   .site-nav {
-    gap: 18px;
-    font-size: 12px;
+    display: none;
   }
 
-  .site-nav a:nth-child(1),
-  .site-nav a:nth-child(3) {
+  .mobile-menu {
+    position: absolute;
+    z-index: 10;
+    top: 21.896px;
+    right: 18px;
+    display: block;
+  }
+
+  .mobile-menu summary {
+    width: 22px;
+    height: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu summary span {
+    width: 22px;
+    height: 3px;
+    border-radius: 4px;
+    background: #231f20;
+  }
+
+  .mobile-menu__panel {
+    position: absolute;
+    top: 28px;
+    right: -18px;
+    width: 170px;
+    padding: 22px 30px 26px;
+    border-top: 1px solid rgba(37, 33, 22, 0.16);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background: var(--paper);
+    box-shadow: 0 14px 28px rgba(37, 33, 22, 0.12);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  .mobile-menu:not([open]) .mobile-menu__panel {
     display: none;
   }
 
   .hero,
   .hero__content {
-    height: 670px;
+    height: 735px;
+    min-height: 620px;
   }
 
   .hero__content {
-    padding-top: 50px;
-    padding-bottom: 30px;
-    gap: 120px;
+    padding: 100px 30px 41.35px;
+    gap: 12px;
   }
 
   .hero .eyebrow {
-    font-size: 10px;
-    letter-spacing: 1.8px;
+    width: 100%;
+    height: auto;
+    min-height: 27px;
+    padding: 0;
+    gap: 14px;
+    align-items: center;
+    white-space: normal;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 2.8px;
+  }
+
+  .hero .eyebrow::before {
+    width: 19px;
+    flex-basis: 19px;
+    margin-top: 0;
   }
 
   .hero h1 {
-    font-size: 52px;
-    line-height: 58px;
-    letter-spacing: -2.5px;
+    width: 100%;
+    height: 126px;
+    padding-top: 38px;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -3.1px;
+    white-space: nowrap;
   }
 
   .hero__intro {
-    width: 315px;
-    font-size: 13px;
-    line-height: 20px;
+    width: 100%;
+    height: 96px;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .visit {
-    padding-top: 74px;
-    padding-bottom: 74px;
-  }
-
-  .visit h2,
-  .story h2,
-  .name-story h2,
-  .menu-feature h2,
-  .shop h2 {
-    font-size: 44px;
-    line-height: 54px;
-    letter-spacing: -2px;
-  }
-
-  .visit__details {
-    height: auto;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    row-gap: 34px;
-  }
-
-  .visit__button {
-    grid-row: auto;
+    width: 100%;
+    height: 521px;
+    min-height: 0;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .eyebrow,
+  .visit .eyebrow,
   .shop .eyebrow {
-    font-size: 11px;
-    letter-spacing: 2px;
+    min-height: 27px;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 2.8px;
+  }
+
+  .visit h2 {
+    width: 342px;
+    max-width: 100%;
+    height: 116px;
+    margin: 0;
+    padding-top: 28px;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -3.1px;
+  }
+
+  .visit__details {
+    width: 100%;
+    height: 278px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .visit__details > div {
+    width: 100%;
+    height: 92px;
+  }
+
+  .visit__details > div + div {
+    margin-top: 28px;
+  }
+
+  .visit__button {
+    grid-column: auto;
+    grid-row: auto;
+    width: 172px;
+    height: 33px;
+    margin-top: 33px;
+    padding: 0 25px;
   }
 
   .story {
-    padding-top: 74px;
+    width: 100%;
+    height: 1076px;
+    min-height: 0;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .story__lead {
+    width: 100%;
+    height: 330px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .story__lead > div {
+    display: contents;
+  }
+
+  .story .eyebrow {
+    gap: 6px;
+  }
+
+  .story h2 {
+    width: 100%;
+    height: 104px;
+    margin: 25px 0 0;
+    padding: 30px 0;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -3.1px;
+    white-space: nowrap;
+  }
+
+  .story__lead > p {
+    width: 100%;
+    height: 144px;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .values {
-    gap: 58px;
+    width: 100%;
+    height: 621px;
+    margin: 0;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
   }
 
   .value {
+    width: 100%;
+    min-height: 167px;
     padding: 0;
   }
 
   .value h3 {
-    margin-bottom: 20px;
-    font-size: 15px;
+    margin-bottom: 42px;
+    font-size: 20px;
+    line-height: 28.9px;
+    white-space: nowrap;
   }
 
-  .value p,
-  .story__lead > p,
-  .name-story__copy p,
-  .shop__copy > p {
+  .value p {
     font-size: 16px;
-    line-height: 25px;
+    font-weight: 400;
+    line-height: 24px;
   }
 
-  .menu-feature__image {
-    height: 480px;
-  }
-
-  .menu-feature__content {
-    height: auto;
-    min-height: 660px;
-    padding: 74px 24px;
-  }
-
-  .shop h2,
-  .shop__copy > p {
+  .menu-feature {
     width: 100%;
-  }
-
-  .shop__actions {
+    height: 1090.297px;
+    padding-bottom: 50px;
+    display: flex;
     flex-direction: column;
   }
 
+  .menu-feature__image {
+    width: 100%;
+    height: 402px;
+    flex: 0 0 402px;
+  }
+
+  .menu-feature__content {
+    width: 100%;
+    height: 638.297px;
+    min-height: 0;
+    padding: 50px 30px 0;
+    gap: 23px;
+  }
+
+  .menu-feature .eyebrow {
+    width: 100%;
+    height: 47px;
+    min-height: 47px;
+    padding-bottom: 20px;
+    align-items: center;
+  }
+
+  .menu-feature .eyebrow::before {
+    margin-top: 0;
+  }
+
+  .menu-feature h2 {
+    width: 100%;
+    height: 118px;
+    margin: 0;
+    padding-bottom: 30px;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -3.1px;
+  }
+
+  .drink-list {
+    height: 264.297px;
+    flex: 0 0 264.297px;
+  }
+
+  .menu-feature .outline-button {
+    margin-top: 42px;
+    flex: 0 0 48px;
+  }
+
+  .name-story {
+    width: 100%;
+    height: 578.703px;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .name-story > div:first-child {
+    display: contents;
+  }
+
+  .name-story .eyebrow {
+    width: 100%;
+    height: 94px;
+    padding-bottom: 40px;
+    gap: 8px;
+    white-space: normal;
+  }
+
+  .name-story h2 {
+    width: 100%;
+    height: 88px;
+    margin: 0;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -3.1px;
+  }
+
+  .name-story__copy {
+    width: 100%;
+    height: 258.703px;
+    margin-top: 38px;
+    padding: 0 0 35px;
+  }
+
+  .name-story__copy p {
+    font-size: 18px;
+    line-height: 28.9px;
+  }
+
+  .name-story__copy p + p {
+    margin-top: 28.9px;
+  }
+
+  .shop {
+    width: 100%;
+    height: 1003.898px;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .shop__copy {
+    width: 100%;
+    height: 576.898px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .shop__text {
+    width: 100%;
+    height: 448.898px;
+  }
+
+  .shop .eyebrow {
+    width: 100%;
+    height: 28.898px;
+    letter-spacing: 2.8px;
+    white-space: nowrap;
+  }
+
+  .shop h2 {
+    width: 100%;
+    height: 148px;
+    margin: 0;
+    padding: 30px 0;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -3.1px;
+  }
+
+  .shop__text > p {
+    width: 100%;
+    height: 272px;
+    margin: 0;
+    padding: 30px 0 26px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .shop__actions {
+    width: 208px;
+    height: 106px;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .shop__actions .outline-button {
+    width: 208px;
+    flex: 0 0 42px;
+  }
+
+  .shop__image {
+    width: 100%;
+    height: 305px;
+    aspect-ratio: auto;
+  }
+
+  .shop__image > span {
+    left: 16px;
+    right: auto;
+    bottom: 14.9px;
+    width: auto;
+  }
+
   .site-footer {
-    padding: 52px 24px 28px;
-    grid-template-columns: 1fr 1fr;
-    gap: 52px 24px;
+    width: 100%;
+    height: 493px;
+    min-height: 0;
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
   }
 
   .site-footer > a {
-    grid-column: 1 / -1;
+    width: 100%;
+    height: 101px;
   }
 
   .brand--footer,
   .brand--footer .brand__lockup {
-    width: 240px;
+    width: 100%;
+  }
+
+  .brand--footer {
+    height: 101px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .brand--footer .brand__mark {
+    width: 70.468px;
+    height: 91.033px;
+    flex: 0 0 70.468px;
+    display: block;
+  }
+
+  .brand--footer .brand__lockup {
+    width: 140px;
+    height: 101px;
+    justify-content: flex-start;
+    gap: 0;
   }
 
   .brand--footer .brand__name {
-    font-size: 72px;
+    width: 164px;
+    height: 60px;
+    font-size: 48px;
+    line-height: 54px;
+    letter-spacing: -5px;
+  }
+
+  .brand--footer .brand__sub {
+    height: 41px;
+    padding: 0 0 0 7px;
+    font-size: 20px;
+    line-height: 15px;
+    letter-spacing: 7px;
+  }
+
+  .footer-links {
+    width: 100%;
+    align-items: center;
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .site-footer nav.footer-links {
+    height: 166px;
+    padding-top: 12px;
+  }
+
+  .site-footer > div.footer-links {
+    height: 80px;
   }
 
   .site-footer__bottom {
-    grid-column: 1 / -1;
-    grid-row: auto;
-    height: auto;
-    flex-direction: column;
-    gap: 12px;
+    width: 1300.328px;
+    height: 26px;
+    flex: 0 0 26px;
+    flex-direction: row;
+    gap: 0;
   }
 }
 
