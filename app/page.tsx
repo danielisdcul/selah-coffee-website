@@ -38,7 +38,10 @@ function Brand({ footer = false }: { footer?: boolean }) {
   return (
     <span className={footer ? "brand brand--footer" : "brand"}>
       {!footer && <img className="brand__mark" src="/selah-mark.svg" alt="" />}
-      <img className="brand__wordmark" src="/selah-wordmark.png" alt="" />
+      <span className="brand__lockup" aria-hidden="true">
+        <span className="brand__name">SELAH</span>
+        <span className="brand__sub">COFFEE</span>
+      </span>
     </span>
   );
 }
