@@ -1,31 +1,28 @@
 # Selah Coffee
 
-A responsive concept website for Selah Coffee, implemented directly from the
-desktop and mobile Figma mockups.
+A static, responsive concept website for Selah Coffee, implemented from the
+desktop and mobile Figma designs.
 
-## Live sites
+## Live site
 
-- GitHub Pages: <https://danielisdcul.github.io/selah-coffee-website/>
-- Sites preview: <https://selah-coffee-mockup.culleydaniel-e.chatgpt.site/>
+<https://danielisdcul.github.io/selah-coffee-website/>
 
-## Local development
+## Preview locally
 
-Requires Node.js 22.13 or newer.
-
-```bash
-npm install
-npm run dev
-```
-
-## Builds
+Open `index.html` directly in a browser, or run a small local server:
 
 ```bash
-npm run build
-npm run pages:build
+python3 -m http.server 8000
 ```
 
-`npm run build` creates the server-capable Vinext deployment. `npm run
-pages:build` additionally renders the homepage to standalone HTML in `pages/`
-for GitHub Pages. The generated `pages/` directory is intentionally ignored;
-GitHub Actions publishes it as a deployment artifact after every push to
-`main`.
+Then visit <http://localhost:8000>.
+
+## Project structure
+
+- `index.html` — page structure and content
+- `styles.css` — responsive layout and visual styles
+- `assets/` — images, logo marks, favicon, and social preview image
+- `.github/workflows/pages.yml` — automatic GitHub Pages deployment
+
+There are no frameworks, package dependencies, or build steps. Pushing to
+`main` automatically publishes the current files to GitHub Pages.
