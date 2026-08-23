@@ -51,7 +51,7 @@
           </span>
         </a>
         <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#story">Our story</a>
+          <a href="#story">Our Story</a>
           <a href="#menu">Menu</a>
           <a href="#shop">Shop</a>
           <a href="#visit">Visit</a>
@@ -72,12 +72,12 @@
       </header>
       <section class="hero" aria-labelledby="hero-title">
         <img
-          class="hero__image"
+          class="hero__image media-cover"
           src="./assets/selah-cafe-hero.png"
           alt="Guests enjoying coffee inside Selah Coffee&#x27;s warm, arched café"
         />
         <div class="hero__shade" aria-hidden="true"></div>
-        <div class="hero__content">
+        <div class="hero__content page-shell">
           <p class="eyebrow eyebrow--light">A community-first coffee house</p>
           <h1 id="hero-title">
             Start with coffee.
@@ -90,10 +90,10 @@
           </p>
         </div>
       </section>
-      <section class="visit" id="visit" aria-labelledby="visit-title">
+      <section class="visit section-shell" id="visit" aria-labelledby="visit-title">
         <div>
           <p class="eyebrow eyebrow--light">Find us</p>
-          <h2 id="visit-title">
+          <h2 class="section-title section-title--light" id="visit-title">
             Come as you are.
             <br />
             Stay awhile.
@@ -111,9 +111,9 @@
           <div>
             <span>Hours</span>
             <p>
-              Mon–Fri 7am–8pm
+              Mon–Fri, 7 a.m.–8 p.m.
               <br />
-              Sat–Sun 8am–5pm
+              Sat–Sun, 8 a.m.–5 p.m.
             </p>
           </div>
           <a
@@ -126,19 +126,19 @@
           </a>
         </div>
       </section>
-      <section class="story" id="story" aria-labelledby="story-title">
+      <section class="story section-shell" id="story" aria-labelledby="story-title">
         <div class="story__lead">
           <div>
             <p class="eyebrow">What guides us</p>
-            <h2 id="story-title">
+            <h2 class="section-title" id="story-title">
               <em>Care</em>
               in every detail
             </h2>
           </div>
-          <p>
+          <p class="body-copy">
             Everything at Selah begins with intention—from the coffee we serve to the people we
-            collaborate with and the space we create. Our values reflect a commitment to thoughtful
-            sourcing, creative community, and making room for moments that matter.
+            collaborate with and the space we create. Our values reflect our commitment to sourcing
+            thoughtfully, nurturing a creative community, and making room for moments that matter.
           </p>
         </div>
         <div class="values" aria-label="Selah Coffee values">
@@ -168,16 +168,17 @@
       <section class="menu-feature" id="menu" aria-labelledby="menu-title">
         <div class="menu-feature__image">
           <img
+            class="media-cover"
             src="./assets/selah-menu-tile.png"
             alt="A framed Selah menu on a sunlit cream wall"
           />
         </div>
-        <div class="menu-feature__content">
+        <div class="menu-feature__content section-shell">
           <p class="eyebrow eyebrow--light">House favorites</p>
-          <h2 id="menu-title">
-            Made to savor,
+          <h2 class="section-title section-title--light" id="menu-title">
+            Made to be savored,
             <br />
-            <em>never to rush.</em>
+            <em>never rushed.</em>
           </h2>
           <div class="drink-list">
             <article class="drink">
@@ -190,13 +191,13 @@
             <article class="drink">
               <div>
                 <h3>Selah Cold Brew</h3>
-                <p>Slow steeped · smooth finish</p>
+                <p>Slow-steeped · smooth finish</p>
               </div>
               <span>$5.50</span>
             </article>
             <article class="drink">
               <div>
-                <h3>Rosemary Vanilla</h3>
+                <h3>Rosemary Vanilla Chai</h3>
                 <p>Espresso · vanilla · rosemary</p>
               </div>
               <span>$6</span>
@@ -212,10 +213,13 @@
           </a>
         </div>
       </section>
-      <section class="name-story" aria-labelledby="name-story-title">
+      <section
+        class="name-story section-shell section-shell--compact-end"
+        aria-labelledby="name-story-title"
+      >
         <div>
           <p class="eyebrow">The meaning behind our name</p>
-          <h2 id="name-story-title">
+          <h2 class="section-title" id="name-story-title">
             <em>Pause,</em>
             and let the
             <br />
@@ -223,42 +227,43 @@
           </h2>
         </div>
         <div class="name-story__copy">
-          <p>
+          <p class="body-copy">
             Selah is a Hebrew term woven throughout the Psalms. Often understood as a musical or
             reflective pause, it invites the listener to stop, breathe, and consider what has just
             been heard.
           </p>
-          <p>
+          <p class="body-copy">
             That same spirit guides our coffee house, a place to slow down, become present, and make
             room for the moment you&#x27;re in.
           </p>
         </div>
       </section>
-      <section class="shop" id="shop" aria-labelledby="shop-title">
+      <section
+        class="shop section-shell section-shell--wide"
+        id="shop"
+        aria-labelledby="shop-title"
+      >
         <div class="shop__copy">
           <div class="shop__text">
             <p class="eyebrow">Made here, with care</p>
-            <h2 id="shop-title">
+            <h2 class="section-title" id="shop-title">
               Locally
               <br />
               crafted
               <br />
               artisan goods.
             </h2>
-            <p>
+            <p class="body-copy">
               Our shelves are shaped by the artists and makers in our community. We partner with
               local creatives to offer handmade ceramics, textiles, prints, and everyday goods—each
               one thoughtfully made and chosen to bring a little more beauty to the daily ritual.
-              <br />
+            </p>
+            <p class="body-copy">
               Every purchase celebrates independent craft and supports the people who make our
               community more creative.
             </p>
           </div>
           <div class="shop__actions">
-            <a class="outline-button" href="#shop">
-              Explore the shop
-              <span aria-hidden="true">→</span>
-            </a>
             <a
               class="outline-button"
               href="mailto:hello@selahcoffee.com?subject=Meet%20the%20artists"
@@ -270,13 +275,14 @@
         </div>
         <div class="shop__image">
           <img
+            class="media-cover"
             src="./assets/selah-merch.png"
             alt="Locally made ceramics, coffee goods, and a white T-shirt arranged on a sunlit wall"
           />
           <span>Locally crafted goods</span>
         </div>
       </section>
-      <footer class="site-footer">
+      <footer class="site-footer page-shell">
         <a href="#top" aria-label="Selah Coffee home">
           <span class="brand brand--footer">
             <img class="brand__mark" src="./assets/selah-mark-light.svg" alt="" />
