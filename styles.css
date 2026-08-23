@@ -1301,7 +1301,7 @@ em {
     padding: 0;
   }
   #shop-text > p:first-of-type {
-    padding-top: 30px;
+    padding-top: 0;
   }
   #shop-text > p + p {
     padding-bottom: 26px;
