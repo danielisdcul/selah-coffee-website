@@ -1,6 +1,39 @@
 @import "https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap";
 
-/* Base normalization ------------------------------------------------------ */
+/* ==========================================================================
+   SELAH COFFEE STYLESHEET — TABLE OF CONTENTS
+
+   1.0  Foundation ........................................... Line 34
+      1.1  Base normalization ................................... Line 36
+      1.2  Design tokens ........................................ Line 237
+      1.3  Document and main ..................................... Line 259
+   2.0  Typography ............................................ Line 283
+      2.1  Headings and body copy ................................ Line 285
+      2.2  Eyebrows .............................................. Line 316
+   3.0  Reusable custom classes ............................... Line 339
+      3.1  Sections and media .................................... Line 341
+      3.2  Buttons ............................................... Line 354
+      3.3  Brand ................................................. Line 383
+   4.0  Header ................................................ Line 424
+      4.1  Navigation ............................................ Line 441
+   5.0  Main content .......................................... Line 470
+      5.1  Hero .................................................. Line 472
+      5.2  Visit ................................................. Line 528
+      5.3  What guides us ........................................ Line 573
+      5.4  Featured menu ......................................... Line 616
+      5.5  Name story ............................................ Line 685
+      5.6  Shop .................................................. Line 701
+   6.0  Footer ................................................ Line 754
+   7.0  Responsive rules ...................................... Line 816
+      7.1  Compact desktop and tablet ............................ Line 818
+      7.2  Tablet ................................................ Line 856
+      7.3  Mobile ................................................ Line 930
+   8.0  Accessibility ......................................... Line 1399
+   ========================================================================== */
+
+/* 1.0 Foundation --------------------------------------------------------- */
+
+/* 1.1 Base normalization ------------------------------------------------- */
 
 @layer theme {
   :root,
@@ -201,7 +234,7 @@
   }
 }
 
-/* Design tokens and global elements -------------------------------------- */
+/* 1.2 Design tokens ------------------------------------------------------ */
 
 :root {
   --canvas: #f2ecdf;
@@ -217,39 +250,46 @@
   --section-space: clamp(50px, 7vw, 100px);
   --section-space-wide: clamp(60px, 8vw, 120px);
   --section-space-compact: clamp(35px, 4vw, 50px);
+  --title-gap: clamp(25px, 2vw, 30px);
   --content-column-gap: clamp(72px, 10vw, 150px);
   --serif: "Libre Baskerville", Georgia, "Times New Roman", serif;
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.page-shell {
-  padding-inline: var(--page-gutter);
-}
-.section-shell {
-  padding-inline: var(--page-gutter);
-  padding-block: var(--section-space);
-}
-.section-shell--wide {
-  padding-block: var(--section-space-wide);
-}
-.section-shell--compact-end {
-  padding-block-end: var(--section-space-compact);
-}
+
+/* 1.3 Document and main -------------------------------------------------- */
+
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 body {
   background: var(--canvas);
   color: var(--ink);
   font-family: var(--sans);
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: geometricprecision;
 }
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* 2.0 Typography --------------------------------------------------------- */
+
+/* 2.1 Headings and body copy -------------------------------------------- */
+
 h1,
 h2,
-.drink h3,
-.drink > span,
-.visit__details p,
-.shop__image > span {
+#drink-list h3,
+#drink-list article > span,
+#visit-details p,
+#shop-image > span {
   font-family: var(--serif);
   font-weight: 400;
 }
@@ -257,16 +297,14 @@ em {
   font-weight: 400;
 }
 .section-title {
-  color: var(--ink);
+  color: inherit;
+  margin-block: var(--title-gap) 0;
   letter-spacing: -0.08em;
   font-size: clamp(36px, 4.25vw, 64px);
   line-height: 1.2;
 }
-.section-title--light {
-  color: var(--light);
-}
 .body-copy {
-  color: var(--ink);
+  color: inherit;
   margin: 0;
   font-size: 1.125rem;
   line-height: 1.67;
@@ -274,28 +312,76 @@ em {
 .body-copy + .body-copy {
   margin-top: 30px;
 }
+
+/* 2.2 Eyebrows ----------------------------------------------------------- */
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  white-space: nowrap;
+  align-items: center;
+  gap: 13px;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 15px;
+  display: flex;
+}
+.eyebrow:before {
+  content: "";
+  background: currentColor;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 2px;
+}
+
+/* 3.0 Reusable custom classes -------------------------------------------- */
+
+/* 3.1 Sections and media ------------------------------------------------- */
+
+.section {
+  width: 100%;
+  padding-inline: var(--page-gutter);
+  padding-block: var(--section-space);
+}
 .media-cover {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-/* Header and navigation -------------------------------------------------- */
+/* 3.2 Buttons ------------------------------------------------------------ */
 
-.site-header {
-  background: var(--paper);
-  border-bottom: 1px solid #25211629;
-  justify-content: center;
+.button {
+  color: var(--button-color, var(--ink));
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  border: 1px solid;
+  justify-content: space-between;
   align-items: center;
-  height: 92px;
-  display: flex;
-  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  min-width: min(205px, 100%);
+  min-height: 44px;
+  padding: 0 22px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 15px;
+  transition:
+    background 0.18s,
+    color 0.18s;
+  display: inline-flex;
 }
-.site-header > a {
-  left: var(--page-gutter);
-  position: absolute;
-  top: 15px;
+.button:hover,
+.button:focus-visible {
+  background: var(--button-hover-bg, var(--ink));
+  color: var(--button-hover-color, var(--paper));
+  outline: none;
 }
+
+/* 3.3 Brand -------------------------------------------------------------- */
+
 .brand {
   align-items: center;
   gap: 19px;
@@ -334,7 +420,27 @@ em {
   line-height: 7px;
   display: block;
 }
-.site-nav {
+
+/* 4.0 Header ------------------------------------------------------------- */
+
+#site-header {
+  background: var(--paper);
+  border-bottom: 1px solid #25211629;
+  justify-content: center;
+  align-items: center;
+  height: 92px;
+  display: flex;
+  position: relative;
+}
+#site-header > a {
+  left: var(--page-gutter);
+  position: absolute;
+  top: 15px;
+}
+
+/* 4.1 Navigation --------------------------------------------------------- */
+
+#primary-nav {
   justify-content: center;
   align-items: flex-start;
   gap: 38px;
@@ -344,103 +450,87 @@ em {
   line-height: 20px;
   display: flex;
 }
-.mobile-menu {
+#mobile-menu {
   display: none;
 }
-.site-nav a,
+#primary-nav a,
 .footer-links a,
-.site-footer__bottom a {
+#footer-bottom a {
   transition: opacity 0.18s;
 }
-.site-nav a:hover,
-.site-nav a:focus-visible,
+#primary-nav a:hover,
+#primary-nav a:focus-visible,
 .footer-links a:hover,
 .footer-links a:focus-visible,
-.site-footer__bottom a:hover,
-.site-footer__bottom a:focus-visible {
+#footer-bottom a:hover,
+#footer-bottom a:focus-visible {
   opacity: 0.56;
 }
 
-/* Hero ------------------------------------------------------------------- */
+/* 5.0 Main content ------------------------------------------------------- */
 
-.hero {
+/* 5.1 Hero --------------------------------------------------------------- */
+
+#hero {
+  padding: 0;
   height: auto;
   min-height: clamp(620px, calc(100svh - 92px), 735px);
   color: var(--light);
   position: relative;
   overflow: hidden;
 }
-.hero__image {
+#hero-image {
   object-position: center;
   position: absolute;
   inset: 0;
 }
-.hero__shade {
+#hero-shade {
   background: linear-gradient(90deg, #1f160bbd 0%, #1f160b1f 62% 100%);
   position: absolute;
   inset: 0;
 }
-.hero__content {
+#hero-content {
   z-index: 1;
   min-height: inherit;
+  padding-inline: var(--page-gutter);
   padding-block: clamp(65px, 9svh, 100px) clamp(40px, 6svh, 60px);
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(75px, 10vw, 155px);
+  gap: 0;
   display: flex;
   position: relative;
 }
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  white-space: nowrap;
-  align-items: center;
-  gap: 13px;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 15px;
-  display: flex;
-}
-.eyebrow:before {
-  content: "";
-  background: currentColor;
-  flex: 0 0 30px;
-  width: 30px;
-  height: 2px;
-}
-.eyebrow--light {
+#hero .eyebrow {
   color: var(--eyebrow-light);
-}
-.hero .eyebrow {
   align-items: flex-start;
   height: auto;
-  padding-top: 0;
 }
-.hero .eyebrow:before {
+#hero .eyebrow:before {
   margin-top: 5px;
 }
-.hero h1 {
+#hero-title {
   width: 100%;
   max-width: 12ch;
   white-space: nowrap;
   color: var(--light);
   letter-spacing: -0.05em;
-  margin: 0;
   font-size: clamp(36px, 6.6vw, 100px);
   line-height: 1.05;
 }
-.hero__intro {
+#hero-intro {
   width: min(100%, 46ch);
   color: var(--light);
-  margin: 0;
+  margin: clamp(75px, 10vw, 155px) 0 0;
   font-size: 16px;
   line-height: 24px;
 }
 
-/* Visit ------------------------------------------------------------------ */
+/* 5.2 Visit -------------------------------------------------------------- */
 
-.visit {
+#visit {
+  --button-color: var(--light);
+  --button-hover-bg: var(--light);
+  --button-hover-color: var(--olive);
   height: auto;
   gap: var(--content-column-gap);
   background: var(--olive);
@@ -448,13 +538,11 @@ em {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   display: grid;
 }
-.visit .eyebrow {
+#visit .eyebrow {
+  color: var(--eyebrow-light);
   font-size: 14px;
 }
-.visit h2 {
-  margin: 28px 0 0;
-}
-.visit__details {
+#visit-details {
   grid-template-rows: auto auto;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-self: end;
@@ -463,7 +551,7 @@ em {
   height: auto;
   display: grid;
 }
-.visit__details span {
+#visit-details div > span {
   color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 0px;
@@ -472,85 +560,44 @@ em {
   line-height: 15px;
   display: block;
 }
-.visit__details p {
+#visit-details p {
   color: var(--light);
   margin: 12px 0 0;
   font-size: 18px;
   line-height: 30px;
 }
-.outline-button {
-  text-transform: uppercase;
-  letter-spacing: 0px;
-  border: 1px solid;
-  justify-content: space-between;
-  align-items: center;
-  width: fit-content;
-  max-width: 100%;
-  min-height: 44px;
-  padding: 0 22px;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 15px;
-  transition:
-    background 0.18s,
-    color 0.18s;
-  display: inline-flex;
-}
-.outline-button:hover,
-.outline-button:focus-visible {
-  background: var(--ink);
-  color: var(--paper);
-  outline: none;
-}
-.outline-button--light:hover,
-.outline-button--light:focus-visible {
-  background: var(--light);
-  color: var(--olive);
-}
-.visit__button {
-  width: 100%;
-  max-width: 270px;
-  height: auto;
-  color: var(--light);
-  letter-spacing: 0px;
-  border-radius: 4px;
+#visit-details .button {
   grid-area: 2/1;
-  justify-content: center;
-  padding: 0 17px;
 }
 
-/* Story and values ------------------------------------------------------- */
+/* 5.3 What guides us ----------------------------------------------------- */
 
-.story {
+#story {
   background: var(--paper);
 }
-.story__lead {
+#story-lead {
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: var(--content-column-gap);
   height: auto;
   margin-top: 25px;
   display: grid;
 }
-.story h2,
-.name-story h2 {
-  margin: 39px 0;
-}
-.story__lead > p {
+#story-lead > p {
   justify-self: end;
   width: min(100%, 46ch);
   padding: 0 6% 35px 2%;
 }
-.values {
+#values-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(30px, 2.65vw, 40px);
   margin-top: 28px;
   display: grid;
 }
-.value {
+#values-grid article {
   min-height: 0;
   padding: 0 18px;
 }
-.value h3 {
+#values-grid h3 {
   color: #000;
   text-transform: uppercase;
   white-space: nowrap;
@@ -558,7 +605,7 @@ em {
   font-size: 20px;
   line-height: 30px;
 }
-.value p {
+#values-grid article p {
   color: #000;
   margin: 0;
   font-size: 18px;
@@ -566,9 +613,13 @@ em {
   line-height: 30px;
 }
 
-/* Featured menu ---------------------------------------------------------- */
+/* 5.4 Featured menu ------------------------------------------------------ */
 
-.menu-feature {
+#menu {
+  --button-color: var(--light);
+  --button-hover-bg: var(--light);
+  --button-hover-color: var(--olive);
+  padding: 0;
   background: var(--olive);
   height: auto;
   min-height: 80svh;
@@ -576,32 +627,32 @@ em {
   grid-template-columns: 51.5fr 48.5fr;
   display: grid;
 }
-.menu-feature__image {
+#menu-image {
   min-height: 80svh;
   overflow: hidden;
 }
-.menu-feature__content {
+#menu-content {
   min-height: 80svh;
+  padding-inline: var(--page-gutter);
+  padding-block: var(--section-space);
   flex-direction: column;
   align-items: flex-start;
   display: flex;
 }
-.menu-feature .eyebrow {
+#menu .eyebrow {
+  color: var(--eyebrow-light);
   align-items: flex-start;
   height: auto;
 }
-.menu-feature .eyebrow:before {
+#menu .eyebrow:before {
   margin-top: 5px;
 }
-.menu-feature h2 {
-  margin: 0;
-}
-.drink-list {
+#drink-list {
   border-top: 1px solid #ffffff59;
   width: 100%;
   margin-top: 0;
 }
-.drink {
+#drink-list article {
   border-bottom: 1px solid #ffffff40;
   justify-content: space-between;
   align-items: flex-start;
@@ -609,56 +660,47 @@ em {
   padding: 20px 0;
   display: flex;
 }
-.drink h3 {
+#drink-list h3 {
   color: var(--light);
   margin: 0;
   font-size: 19px;
   line-height: 23px;
 }
-.drink p {
+#drink-list article p {
   color: #ffffffab;
   margin: 7px 0 0;
   font-size: 12px;
   line-height: 15px;
 }
-.drink > span {
+#drink-list article > span {
   color: var(--light);
   font-size: 16px;
   font-style: italic;
   line-height: normal;
 }
-.menu-feature .outline-button {
-  min-height: 48px;
-  color: var(--light);
-  justify-content: center;
+#menu .button {
   margin-top: 42px;
-  padding: 0 24px;
-  font-family: Arial, sans-serif;
-  font-size: 9px;
-  line-height: 15px;
 }
 
-/* Name story ------------------------------------------------------------- */
+/* 5.5 Name story --------------------------------------------------------- */
 
-.name-story {
+#name-story {
   height: auto;
+  padding-block-end: var(--section-space-compact);
   gap: var(--content-column-gap);
   background: var(--name-paper);
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   display: grid;
 }
-.name-story h2 {
-  margin: 36px 0;
-}
-.name-story__copy {
+#name-story-copy {
   justify-self: end;
   width: min(100%, 46ch);
   padding: 0 0 35px;
 }
 
-/* Shop ------------------------------------------------------------------- */
+/* 5.6 Shop --------------------------------------------------------------- */
 
-.shop {
+#shop {
   height: auto;
   background: var(--paper);
   grid-template-columns: minmax(0, 37fr) minmax(0, 63fr);
@@ -666,42 +708,36 @@ em {
   gap: clamp(60px, 8vw, 120px);
   display: grid;
 }
-.shop__copy {
+#shop-copy {
   height: auto;
 }
-.shop .eyebrow {
+#shop .eyebrow {
   letter-spacing: 5px;
   font-size: 17px;
   line-height: 30px;
 }
-.shop .eyebrow:before {
+#shop .eyebrow:before {
   height: 1px;
 }
-.shop h2 {
+#shop-title {
   width: 100%;
-  max-width: 7ch;
-  margin: 30px 0;
 }
-.shop__text > p {
+#shop-text > p {
   width: min(100%, 46ch);
 }
-.shop__text > p:first-of-type {
+#shop-text > p:first-of-type {
   padding-top: 44px;
 }
-.shop__text > p + p {
+#shop-text > p + p {
   padding-bottom: 44px;
 }
-.shop__actions {
-  gap: 30px;
-  display: flex;
-}
-.shop__image {
+#shop-image {
   aspect-ratio: 1;
   width: 100%;
   height: auto;
   position: relative;
 }
-.shop__image > span {
+#shop-image > span {
   color: var(--ink);
   background: #fbf7ecf0;
   align-items: flex-start;
@@ -715,10 +751,11 @@ em {
   right: 24px;
 }
 
-/* Footer ----------------------------------------------------------------- */
+/* 6.0 Footer ------------------------------------------------------------- */
 
-.site-footer {
+#site-footer {
   height: auto;
+  padding-inline: var(--page-gutter);
   padding-block: 36px;
   background: var(--olive-deep);
   color: var(--light);
@@ -727,25 +764,25 @@ em {
   gap: 47px clamp(70px, 14.02vw, 212px);
   display: grid;
 }
-.brand--footer {
+#site-footer .brand {
   width: clamp(280px, 29vw, 438px);
   height: auto;
   display: block;
 }
-.brand--footer .brand__mark {
+#site-footer .brand__mark {
   display: none;
 }
-.brand--footer .brand__lockup {
+#site-footer .brand__lockup {
   align-items: center;
   width: 100%;
   height: auto;
 }
-.brand--footer .brand__name {
+#site-footer .brand__name {
   letter-spacing: -0.055em;
   font-size: clamp(60px, 6.1vw, 92px);
   line-height: 0.82;
 }
-.brand--footer .brand__sub {
+#site-footer .brand__sub {
   font-family: var(--sans);
   letter-spacing: 7px;
   margin-top: 0;
@@ -762,7 +799,7 @@ em {
   line-height: 26px;
   display: flex;
 }
-.site-footer__bottom {
+#footer-bottom {
   color: #ffffff8c;
   text-transform: uppercase;
   letter-spacing: 0px;
@@ -776,141 +813,177 @@ em {
   display: flex;
 }
 
-/* Responsive: compact desktop and tablet -------------------------------- */
+/* 7.0 Responsive rules --------------------------------------------------- */
+
+/* 7.1 Compact desktop and tablet ---------------------------------------- */
 
 @media (width<=1180px) {
   :root {
     --page-gutter: 48px;
     --content-column-gap: clamp(40px, 5.4vw, 64px);
   }
-  .site-nav {
+  #primary-nav {
     width: auto;
   }
-  .story__lead,
-  .name-story,
-  .shop {
+  #story-lead,
+  #name-story,
+  #shop {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: var(--content-column-gap);
   }
-  .story__lead > p,
-  .name-story__copy,
-  .shop__image,
-  .shop__copy,
-  .shop__text > p {
+  #story-lead > p,
+  #name-story-copy,
+  #shop-image,
+  #shop-copy,
+  #shop-text > p {
     width: 100%;
   }
-  .values {
+  #values-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .value h3 {
+  #values-grid h3 {
     white-space: normal;
   }
-  .visit {
+  #visit {
     grid-template-columns: 1fr 1fr;
   }
-  .visit__details {
+  #visit-details {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
   }
 }
 
-/* Responsive: tablet ----------------------------------------------------- */
+/* 7.2 Tablet ------------------------------------------------------------- */
 
 @media (width<=900px) {
-  .site-header {
+  #site-header {
     justify-content: flex-end;
     padding-right: 28px;
   }
-  .site-nav {
+  #primary-nav {
     gap: 24px;
     font-size: 14px;
   }
-  .hero__content {
-    gap: 125px;
-  }
-  .hero h1 {
+  #hero-title {
     font-size: 72px;
     line-height: 78px;
   }
-  .visit,
-  .story__lead,
-  .name-story,
-  .shop {
+  #visit,
+  #story-lead,
+  #name-story,
+  #shop {
     grid-template-columns: 1fr;
     height: auto;
   }
-  .visit {
+  #visit {
     min-height: 0;
   }
-  .visit__details {
+  #visit-details {
     align-self: start;
   }
-  .story__lead {
+  #story-lead {
     height: auto;
   }
-  .story__lead > p {
+  #story-lead > p {
     padding-left: 0;
   }
-  .values {
+  #values-grid {
     grid-template-columns: 1fr;
   }
-  .menu-feature {
+  #menu {
     grid-template-columns: 1fr;
     height: auto;
     min-height: 0;
   }
-  .menu-feature__image {
+  #menu-image {
     aspect-ratio: 16 / 10;
     height: auto;
     min-height: 0;
   }
-  .menu-feature__content {
+  #menu-content {
     height: auto;
     min-height: 0;
   }
-  .name-story__copy {
+  #name-story-copy {
     padding-bottom: 40px;
   }
-  .shop__copy,
-  .shop__image {
+  #shop-copy,
+  #shop-image {
     height: auto;
   }
-  .shop__image {
+  #shop-image {
     aspect-ratio: 1;
   }
-  .site-footer {
+  #site-footer {
     grid-template-rows: auto auto;
     grid-template-columns: 2fr 1fr 1fr;
     column-gap: 42px;
     height: auto;
     min-height: 0;
   }
-  .brand--footer,
-  .brand--footer .brand__lockup {
+  #site-footer .brand,
+  #site-footer .brand__lockup {
     width: 280px;
   }
 }
 
-/* Responsive: mobile ----------------------------------------------------- */
+/* 7.3 Mobile ------------------------------------------------------------- */
 
 @media (width<=620px) {
   :root {
     --page-gutter: clamp(30px, 7vw, 48px);
   }
   .section-title {
-    letter-spacing: -0.08em;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    letter-spacing: -0.06em;
+    font-size: clamp(28px, 8.25vw, 36px);
+    line-height: 1.15;
   }
   .body-copy {
+    max-width: 100%;
+    overflow-wrap: anywhere;
     font-size: 1rem;
     line-height: 1.5;
   }
-  .site-header {
+  #hero-intro,
+  #visit-details p,
+  #values-grid article p,
+  #drink-list h3,
+  #drink-list article p,
+  #shop-image > span,
+  .footer-links,
+  #footer-bottom {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  #drink-list article > div {
+    min-width: 0;
+  }
+  #drink-list article > span {
+    flex-shrink: 0;
+  }
+  #hero-content,
+  #visit > *,
+  #story-lead > *,
+  #values-grid article,
+  #menu-content,
+  #name-story > *,
+  #shop > *,
+  #shop-copy,
+  #shop-text,
+  #site-footer > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+  #site-header {
     border-bottom: 0;
     justify-content: space-between;
     height: 60px;
     padding: 0 18px;
   }
-  .site-header > a {
+  #site-header > a {
     top: 8px;
     left: 18px;
   }
@@ -941,17 +1014,17 @@ em {
     font-size: 7px;
     line-height: 5px;
   }
-  .site-nav {
+  #primary-nav {
     display: none;
   }
-  .mobile-menu {
+  #mobile-menu {
     z-index: 10;
     display: block;
     position: absolute;
     top: 20px;
     right: 18px;
   }
-  .mobile-menu summary {
+  #mobile-menu summary {
     cursor: pointer;
     flex-direction: column;
     justify-content: space-between;
@@ -960,16 +1033,16 @@ em {
     list-style: none;
     display: flex;
   }
-  .mobile-menu summary::-webkit-details-marker {
+  #mobile-menu summary::-webkit-details-marker {
     display: none;
   }
-  .mobile-menu summary span {
+  #mobile-menu summary span {
     background: #231f20;
     border-radius: 4px;
     width: 22px;
     height: 3px;
   }
-  .mobile-menu__panel {
+  #mobile-nav {
     background: var(--paper);
     border-top: 1px solid #25211629;
     flex-direction: column;
@@ -985,48 +1058,45 @@ em {
     right: -18px;
     box-shadow: 0 14px 28px #2521161f;
   }
-  .mobile-menu:not([open]) .mobile-menu__panel {
+  #mobile-menu:not([open]) #mobile-nav {
     display: none;
   }
-  .hero {
+  #hero {
     height: auto;
     min-height: clamp(620px, calc(100svh - 60px), 735px);
   }
-  .hero__content {
+  #hero-content {
     min-height: inherit;
-    gap: clamp(12px, 3svh, 24px);
     padding-block: clamp(80px, 14svh, 100px) clamp(40px, 6svh, 50px);
   }
-  .hero .eyebrow {
-    white-space: normal;
-    letter-spacing: 5px;
+  #hero .eyebrow {
     align-items: center;
-    gap: 14px;
     width: 100%;
     height: auto;
-    padding: 0;
-    font-size: 16px;
-    line-height: 27px;
   }
-  .hero .eyebrow:before {
+  #hero .eyebrow:before {
     flex-basis: 19px;
     width: 19px;
     margin-top: 0;
   }
-  .hero h1 {
+  #hero-title {
+    max-width: 100%;
     letter-spacing: -0.05em;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
     width: 100%;
     height: auto;
-    padding-top: 38px;
+    font-size: clamp(26px, 8.25vw, 36px);
+    line-height: 1.12;
   }
-  .hero__intro {
+  #hero-intro {
     width: 100%;
     height: auto;
+    margin-top: clamp(12px, 3svh, 24px);
     font-size: 1rem;
     line-height: 1.5;
   }
-  .visit {
+  #visit {
     flex-direction: column;
     gap: 0;
     width: 100%;
@@ -1035,20 +1105,30 @@ em {
     display: flex;
   }
   .eyebrow,
-  .visit .eyebrow,
-  .shop .eyebrow {
-    letter-spacing: 5px;
-    font-size: 16px;
-    line-height: 27px;
+  #hero .eyebrow,
+  #visit .eyebrow,
+  #shop .eyebrow {
+    white-space: normal;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    letter-spacing: 0.14em;
+    gap: clamp(8px, 3vw, 14px);
+    font-size: clamp(11px, 3.25vw, 14px);
+    line-height: 1.4;
   }
-  .visit h2 {
+  .eyebrow:before,
+  #hero .eyebrow:before {
+    flex-basis: clamp(15px, 4vw, 19px);
+    width: clamp(15px, 4vw, 19px);
+    flex-shrink: 0;
+  }
+  #visit-title {
     width: 342px;
     max-width: 100%;
     height: auto;
-    margin: 0;
-    padding-top: 28px;
   }
-  .visit__details {
+  #visit-details {
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
@@ -1056,21 +1136,21 @@ em {
     height: auto;
     display: flex;
   }
-  .visit__details > div {
+  #visit-details > div {
     width: 100%;
     height: auto;
   }
-  .visit__details > div + div {
+  #visit-details > div + div {
     margin-top: 28px;
   }
-  .visit__button {
+  #visit-details .button {
     grid-area: auto;
     width: fit-content;
     min-height: 44px;
     margin-top: 33px;
     padding: 0 25px;
   }
-  .story {
+  #story {
     flex-direction: column;
     gap: 25px;
     width: 100%;
@@ -1078,7 +1158,7 @@ em {
     min-height: 0;
     display: flex;
   }
-  .story__lead {
+  #story-lead {
     flex-direction: column;
     gap: 0;
     width: 100%;
@@ -1086,25 +1166,20 @@ em {
     margin: 0;
     display: flex;
   }
-  .story__lead > div {
+  #story-lead > div {
     display: contents;
   }
-  .story .eyebrow {
-    gap: 6px;
-  }
-  .story h2 {
-    white-space: nowrap;
+  #story-title {
+    white-space: normal;
     width: 100%;
     height: auto;
-    margin: 25px 0 0;
-    padding: 30px 0;
   }
-  .story__lead > p {
+  #story-lead > p {
     width: 100%;
     height: auto;
     padding: 0;
   }
-  .values {
+  #values-grid {
     flex-direction: column;
     gap: 60px;
     width: 100%;
@@ -1113,23 +1188,25 @@ em {
     padding-left: 15px;
     display: flex;
   }
-  .value {
+  #values-grid article {
     width: 100%;
     min-height: 0;
     padding: 0;
   }
-  .value h3 {
-    white-space: nowrap;
+  #values-grid h3 {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
     margin-bottom: 42px;
-    font-size: 20px;
-    line-height: 30px;
+    font-size: clamp(16px, 4.8vw, 20px);
+    line-height: 1.5;
   }
-  .value p {
+  #values-grid article p {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
   }
-  .menu-feature {
+  #menu {
     flex-direction: column;
     width: 100%;
     height: auto;
@@ -1137,73 +1214,62 @@ em {
     padding-bottom: 50px;
     display: flex;
   }
-  .menu-feature__image {
+  #menu-image {
     aspect-ratio: 1;
     flex: 0 0 auto;
     width: 100%;
     height: auto;
     min-height: 0;
   }
-  .menu-feature__content {
-    gap: 23px;
+  #menu-content {
     width: 100%;
     height: auto;
     min-height: 0;
     padding-bottom: 0;
   }
-  .menu-feature .eyebrow {
+  #menu .eyebrow {
     align-items: center;
     width: 100%;
     height: auto;
     min-height: 0;
-    padding-bottom: 20px;
   }
-  .menu-feature .eyebrow:before {
+  #menu .eyebrow:before {
     margin-top: 0;
   }
-  .menu-feature h2 {
+  #menu-title {
     width: 100%;
     height: auto;
-    margin: 0;
     padding-bottom: 30px;
   }
-  .drink-list {
+  #drink-list {
     flex: 0 0 auto;
     height: auto;
   }
-  .menu-feature .outline-button {
+  #menu .button {
     flex: 0 0 auto;
     margin-top: 42px;
   }
-  .name-story {
+  #name-story {
     flex-direction: column;
     gap: 0;
     width: 100%;
     height: auto;
     display: flex;
   }
-  .name-story > div:first-child {
+  #name-story > div:first-child {
     display: contents;
   }
-  .name-story .eyebrow {
-    white-space: normal;
-    gap: 8px;
+  #name-story-title {
     width: 100%;
     height: auto;
-    padding-bottom: 40px;
   }
-  .name-story h2 {
-    width: 100%;
-    height: auto;
-    margin: 0;
-  }
-  .name-story__copy {
+  #name-story-copy {
     width: 100%;
     height: auto;
     margin-top: 38px;
     padding: 0 0 35px;
   }
-  .shop {
+  #shop {
     flex-direction: column;
     align-items: flex-start;
     gap: 22px;
@@ -1211,60 +1277,50 @@ em {
     height: auto;
     display: flex;
   }
-  .shop__copy {
+  #shop-copy {
     flex-direction: column;
     gap: 22px;
     width: 100%;
     height: auto;
     display: flex;
   }
-  .shop__text {
+  #shop-text {
     width: 100%;
     height: auto;
   }
-  .shop .eyebrow {
-    letter-spacing: 5px;
-    white-space: nowrap;
+  #shop .eyebrow {
     width: 100%;
   }
-  .shop h2 {
+  #shop-title {
     width: 100%;
     height: auto;
-    margin: 0;
-    padding: 30px 0;
+    padding: 0 0 30px;
   }
-  .shop__text > p {
+  #shop-text > p {
     width: 100%;
     padding: 0;
   }
-  .shop__text > p:first-of-type {
+  #shop-text > p:first-of-type {
     padding-top: 30px;
   }
-  .shop__text > p + p {
+  #shop-text > p + p {
     padding-bottom: 26px;
   }
-  .shop__actions {
-    flex-direction: column;
-    gap: 22px;
-    width: min(100%, 208px);
-    height: auto;
-  }
-  .shop__actions .outline-button {
+  #shop-copy > .button {
     flex: 0 0 auto;
-    width: 100%;
   }
-  .shop__image {
+  #shop-image {
     aspect-ratio: 1;
     width: 100%;
     height: auto;
   }
-  .shop__image > span {
+  #shop-image > span {
     width: auto;
     bottom: 15px;
     left: 16px;
     right: auto;
   }
-  .site-footer {
+  #site-footer {
     flex-direction: column;
     gap: 16px;
     width: 100%;
@@ -1274,46 +1330,47 @@ em {
     display: flex;
     overflow: hidden;
   }
-  .site-footer > a {
+  #site-footer > a {
     width: 100%;
     height: auto;
   }
-  .brand--footer,
-  .brand--footer .brand__lockup {
+  #site-footer .brand,
+  #site-footer .brand__lockup {
     width: 100%;
   }
-  .brand--footer {
+  #site-footer .brand {
     justify-content: center;
     align-items: flex-start;
     gap: 12px;
     height: auto;
     display: flex;
   }
-  .brand--footer .brand__mark {
-    flex: 0 0 70px;
-    width: 70px;
-    height: 90px;
+  #site-footer .brand__mark {
+    aspect-ratio: 7 / 9;
+    flex: 0 0 clamp(60px, 18vw, 70px);
+    width: clamp(60px, 18vw, 70px);
+    height: auto;
     display: block;
   }
-  .brand--footer .brand__lockup {
+  #site-footer .brand__lockup {
     justify-content: flex-start;
     gap: 0;
-    width: 140px;
-    height: 101px;
+    width: min(48vw, 164px);
+    height: auto;
   }
-  .brand--footer .brand__name {
-    letter-spacing: -5px;
-    width: 164px;
-    height: 60px;
-    font-size: 48px;
-    line-height: 54px;
+  #site-footer .brand__name {
+    letter-spacing: -0.1em;
+    width: 100%;
+    height: auto;
+    font-size: clamp(42px, 12vw, 48px);
+    line-height: 1.1;
   }
-  .brand--footer .brand__sub {
-    letter-spacing: 7px;
-    height: 41px;
+  #site-footer .brand__sub {
+    letter-spacing: clamp(4px, 1.6vw, 7px);
+    height: auto;
     padding: 0 0 0 7px;
-    font-size: 20px;
-    line-height: 15px;
+    font-size: clamp(16px, 5vw, 20px);
+    line-height: 1;
   }
   .footer-links {
     align-items: center;
@@ -1321,23 +1378,25 @@ em {
     font-size: 18px;
     line-height: 26px;
   }
-  .site-footer nav.footer-links {
+  #site-footer nav.footer-links {
     height: auto;
     padding-top: 12px;
   }
-  .site-footer > div.footer-links {
+  #site-footer > div.footer-links {
     height: auto;
   }
-  .site-footer__bottom {
-    flex-direction: row;
+  #footer-bottom {
+    flex-direction: column;
     flex: 0 0 auto;
-    gap: 0;
+    align-items: center;
+    gap: 8px;
     width: 100%;
     height: auto;
+    text-align: center;
   }
 }
 
-/* Accessibility ---------------------------------------------------------- */
+/* 8.0 Accessibility ------------------------------------------------------ */
 
 @media (prefers-reduced-motion: reduce) {
   html {

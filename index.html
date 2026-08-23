@@ -40,7 +40,7 @@
   </head>
   <body>
     <main id="top">
-      <header class="site-header">
+      <header id="site-header">
         <a href="#top" aria-label="Selah Coffee home">
           <span class="brand">
             <img class="brand__mark" src="./assets/selah-mark.svg" alt="" />
@@ -50,19 +50,19 @@
             </span>
           </span>
         </a>
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="#story">Our Story</a>
+        <nav id="primary-nav" aria-label="Primary navigation">
+          <a href="#story">Our story</a>
           <a href="#menu">Menu</a>
           <a href="#shop">Shop</a>
           <a href="#visit">Visit</a>
         </nav>
-        <details class="mobile-menu">
+        <details id="mobile-menu">
           <summary aria-label="Open navigation menu">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </summary>
-          <nav class="mobile-menu__panel" aria-label="Mobile navigation">
+          <nav id="mobile-nav" aria-label="Mobile navigation">
             <a href="#story">Our story</a>
             <a href="#menu">Menu</a>
             <a href="#shop">Shop</a>
@@ -70,36 +70,37 @@
           </nav>
         </details>
       </header>
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="section" id="hero" aria-labelledby="hero-title">
         <img
-          class="hero__image media-cover"
+          class="media-cover"
+          id="hero-image"
           src="./assets/selah-cafe-hero.png"
           alt="Guests enjoying coffee inside Selah Coffee&#x27;s warm, arched café"
         />
-        <div class="hero__shade" aria-hidden="true"></div>
-        <div class="hero__content page-shell">
-          <p class="eyebrow eyebrow--light">A community-first coffee house</p>
-          <h1 id="hero-title">
+        <div id="hero-shade" aria-hidden="true"></div>
+        <div id="hero-content">
+          <p class="eyebrow">A community-first coffee house</p>
+          <h1 class="section-title" id="hero-title">
             Start with coffee.
             <br />
             Stay for company.
           </h1>
-          <p class="hero__intro">
+          <p class="body-copy" id="hero-intro">
             Settle into a quiet corner, pull up to the table, or find somewhere in between.
             There&#x27;s room here for focus, conversation, and simply being around others.
           </p>
         </div>
       </section>
-      <section class="visit section-shell" id="visit" aria-labelledby="visit-title">
-        <div>
-          <p class="eyebrow eyebrow--light">Find us</p>
-          <h2 class="section-title section-title--light" id="visit-title">
+      <section class="section" id="visit" aria-labelledby="visit-title">
+        <div id="visit-heading">
+          <p class="eyebrow">Find us</p>
+          <h2 class="section-title" id="visit-title">
             Come as you are.
             <br />
             Stay awhile.
           </h2>
         </div>
-        <div class="visit__details">
+        <div id="visit-details">
           <div>
             <span>Find us</span>
             <p>
@@ -117,17 +118,18 @@
             </p>
           </div>
           <a
-            class="outline-button outline-button--light visit__button"
+            class="button"
             href="https://www.google.com/maps/search/?api=1&amp;query=1234+Grand+Ave+San+Diego+California"
             target="_blank"
             rel="noreferrer"
           >
             Get directions
+            <span aria-hidden="true">→</span>
           </a>
         </div>
       </section>
-      <section class="story section-shell" id="story" aria-labelledby="story-title">
-        <div class="story__lead">
+      <section class="section" id="story" aria-labelledby="story-title">
+        <div id="story-lead">
           <div>
             <p class="eyebrow">What guides us</p>
             <h2 class="section-title" id="story-title">
@@ -141,22 +143,22 @@
             thoughtfully, nurturing a creative community, and making room for moments that matter.
           </p>
         </div>
-        <div class="values" aria-label="Selah Coffee values">
-          <article class="value">
+        <div id="values-grid" aria-label="Selah Coffee values">
+          <article>
             <h3>01 — Thoughtful sourcing</h3>
             <p>
               We choose ingredients and coffee with intention, prioritizing quality, responsible
               partnerships, and practices that respect the people behind every cup.
             </p>
           </article>
-          <article class="value">
+          <article>
             <h3>02 — Creative community</h3>
             <p>
               We collaborate with local artists, makers, and small businesses—creating opportunities
               for their work to be experienced, appreciated, and supported.
             </p>
           </article>
-          <article class="value">
+          <article>
             <h3>03 — Room to pause</h3>
             <p>
               Selah is designed as a place to slow down. From the atmosphere to the service, every
@@ -165,56 +167,58 @@
           </article>
         </div>
       </section>
-      <section class="menu-feature" id="menu" aria-labelledby="menu-title">
-        <div class="menu-feature__image">
+      <section class="section" id="menu" aria-labelledby="menu-title">
+        <div id="menu-image">
           <img
             class="media-cover"
             src="./assets/selah-menu-tile.png"
             alt="A framed Selah menu on a sunlit cream wall"
           />
         </div>
-        <div class="menu-feature__content section-shell">
-          <p class="eyebrow eyebrow--light">House favorites</p>
-          <h2 class="section-title section-title--light" id="menu-title">
+        <div id="menu-content">
+          <p class="eyebrow">House favorites</p>
+          <h2 class="section-title" id="menu-title">
             Made to be savored,
             <br />
             <em>never rushed.</em>
           </h2>
-          <div class="drink-list">
-            <article class="drink">
+          <div id="drink-list">
+            <article>
               <div>
                 <h3>Golden Hour Latte</h3>
                 <p>Turmeric · honey · oat milk</p>
               </div>
               <span>$6</span>
             </article>
-            <article class="drink">
+            <article>
               <div>
                 <h3>Selah Cold Brew</h3>
                 <p>Slow-steeped · smooth finish</p>
               </div>
               <span>$5.50</span>
             </article>
-            <article class="drink">
+            <article>
               <div>
-                <h3>Rosemary Vanilla Chai</h3>
+                <h3>Rosemary Vanilla</h3>
                 <p>Espresso · vanilla · rosemary</p>
               </div>
               <span>$6</span>
             </article>
           </div>
           <a
-            class="outline-button outline-button--light"
+            class="button"
             href="./assets/selah-menu-board.png"
             target="_blank"
             rel="noreferrer"
           >
             View full menu
+            <span aria-hidden="true">→</span>
           </a>
         </div>
       </section>
       <section
-        class="name-story section-shell section-shell--compact-end"
+        class="section"
+        id="name-story"
         aria-labelledby="name-story-title"
       >
         <div>
@@ -226,7 +230,7 @@
             moment settle.
           </h2>
         </div>
-        <div class="name-story__copy">
+        <div id="name-story-copy">
           <p class="body-copy">
             Selah is a Hebrew term woven throughout the Psalms. Often understood as a musical or
             reflective pause, it invites the listener to stop, breathe, and consider what has just
@@ -239,19 +243,15 @@
         </div>
       </section>
       <section
-        class="shop section-shell section-shell--wide"
+        class="section"
         id="shop"
         aria-labelledby="shop-title"
       >
-        <div class="shop__copy">
-          <div class="shop__text">
+        <div id="shop-copy">
+          <div id="shop-text">
             <p class="eyebrow">Made here, with care</p>
             <h2 class="section-title" id="shop-title">
-              Locally
-              <br />
-              crafted
-              <br />
-              artisan goods.
+              Locally crafted <br /> artisan goods.
             </h2>
             <p class="body-copy">
               Our shelves are shaped by the artists and makers in our community. We partner with
@@ -263,17 +263,12 @@
               community more creative.
             </p>
           </div>
-          <div class="shop__actions">
-            <a
-              class="outline-button"
-              href="mailto:hello@selahcoffee.com?subject=Meet%20the%20artists"
-            >
-              Meet the artists
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
+          <a class="button" href="mailto:hello@selahcoffee.com?subject=Meet%20the%20artists">
+            Meet the artists
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
-        <div class="shop__image">
+        <div id="shop-image">
           <img
             class="media-cover"
             src="./assets/selah-merch.png"
@@ -282,9 +277,9 @@
           <span>Locally crafted goods</span>
         </div>
       </section>
-      <footer class="site-footer page-shell">
+      <footer id="site-footer">
         <a href="#top" aria-label="Selah Coffee home">
-          <span class="brand brand--footer">
+          <span class="brand">
             <img class="brand__mark" src="./assets/selah-mark-light.svg" alt="" />
             <span class="brand__lockup" aria-hidden="true">
               <span class="brand__name">SELAH</span>
@@ -302,7 +297,7 @@
           <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
           <a href="mailto:hello@selahcoffee.com">Email</a>
         </div>
-        <div class="site-footer__bottom">
+        <div id="footer-bottom">
           <span>© 2026 Selah Coffee</span>
           <span>Good coffee. Peaceful moments.</span>
           <a href="#top">Back to top ↑</a>
