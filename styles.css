@@ -383,41 +383,12 @@ em {
 /* 3.3 Brand -------------------------------------------------------------- */
 
 .brand {
-  align-items: center;
-  gap: 19px;
-  width: 151px;
-  height: 61px;
-  display: flex;
-}
-.brand__mark {
-  object-fit: contain;
-  flex: 0 0 47px;
-  width: 47px;
-  height: 61px;
-}
-.brand__lockup {
-  flex-direction: column;
-  align-items: center;
-  width: 85px;
-  height: 40px;
-  display: flex;
-}
-.brand__name {
-  letter-spacing: -2px;
-  white-space: nowrap;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 28px;
+  width: 164px;
   display: block;
 }
-.brand__sub {
-  letter-spacing: 5px;
-  white-space: nowrap;
-  padding-top: 5px;
-  padding-left: 5px;
-  font-family: Arial, sans-serif;
-  font-size: 9px;
-  line-height: 7px;
+.brand__logo {
+  width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -435,7 +406,8 @@ em {
 #site-header > a {
   left: var(--page-gutter);
   position: absolute;
-  top: 15px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* 4.1 Navigation --------------------------------------------------------- */
@@ -779,30 +751,9 @@ em {
 }
 #site-footer .brand {
   width: clamp(280px, 29vw, 438px);
-  height: auto;
-  display: block;
 }
-#site-footer .brand__mark {
-  display: none;
-}
-#site-footer .brand__lockup {
-  align-items: center;
-  width: 100%;
-  height: auto;
-}
-#site-footer .brand__name {
-  letter-spacing: -0.055em;
-  font-size: clamp(60px, 6.1vw, 92px);
-  line-height: 0.82;
-}
-#site-footer .brand__sub {
-  font-family: var(--sans);
-  letter-spacing: 7px;
-  margin-top: 0;
-  padding-top: 5px;
-  padding-left: 7px;
-  font-size: 14px;
-  line-height: 15px;
+#site-footer .brand__logo {
+  filter: brightness(0) invert(1);
 }
 .footer-links {
   color: var(--light);
@@ -934,8 +885,7 @@ em {
     height: auto;
     min-height: 0;
   }
-  #site-footer .brand,
-  #site-footer .brand__lockup {
+  #site-footer .brand {
     width: 280px;
   }
 }
@@ -1005,35 +955,12 @@ em {
     top: 0;
   }
   #site-header > a {
-    top: 8px;
+    top: 50%;
     left: 18px;
   }
   .brand {
-    gap: 5px;
-    width: 95px;
-    height: 45px;
+    width: 112px;
     transform: none;
-  }
-  .brand__mark {
-    flex-basis: 35px;
-    width: 35px;
-    height: 45px;
-  }
-  .brand__lockup {
-    justify-content: center;
-    gap: 5px;
-    width: 60px;
-    height: 30px;
-  }
-  .brand__name {
-    letter-spacing: -2px;
-    font-size: 20px;
-    line-height: 20px;
-  }
-  .brand__sub {
-    padding: 0 0 0 5px;
-    font-size: 7px;
-    line-height: 5px;
   }
   #primary-nav {
     display: none;
@@ -1403,43 +1330,9 @@ em {
     width: 100%;
     height: auto;
   }
-  #site-footer .brand,
-  #site-footer .brand__lockup {
-    width: 100%;
-  }
   #site-footer .brand {
-    justify-content: center;
-    align-items: flex-start;
-    gap: 12px;
-    height: auto;
-    display: flex;
-  }
-  #site-footer .brand__mark {
-    aspect-ratio: 7 / 9;
-    flex: 0 0 clamp(60px, 18vw, 70px);
-    width: clamp(60px, 18vw, 70px);
-    height: auto;
-    display: block;
-  }
-  #site-footer .brand__lockup {
-    justify-content: flex-start;
-    gap: 0;
-    width: min(48vw, 164px);
-    height: auto;
-  }
-  #site-footer .brand__name {
-    letter-spacing: -0.1em;
-    width: 100%;
-    height: auto;
-    font-size: clamp(42px, 12vw, 48px);
-    line-height: 1.1;
-  }
-  #site-footer .brand__sub {
-    letter-spacing: clamp(4px, 1.6vw, 7px);
-    height: auto;
-    padding: 0 0 0 7px;
-    font-size: clamp(16px, 5vw, 20px);
-    line-height: 1;
+    width: min(82vw, 350px);
+    margin-inline: auto;
   }
   .footer-links {
     align-items: center;
