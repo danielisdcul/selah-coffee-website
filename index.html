@@ -304,5 +304,71 @@
         </div>
       </footer>
     </main>
+    <script>
+      const mobileMenu = document.querySelector("#mobile-menu");
+      const mobileMenuSummary = mobileMenu.querySelector("summary");
+      const mobileNav = mobileMenu.querySelector("#mobile-nav");
+      const mobileNavLinks = mobileNav.querySelectorAll("a");
+
+      const finishClosingMobileMenu = () => {
+        mobileMenu.open = false;
+        mobileMenu.classList.remove("is-closing");
+      };
+
+      const closeMobileMenu = () => {
+        if (!mobileMenu.open || mobileMenu.classList.contains("is-closing")) return;
+
+        mobileMenu.classList.add("is-closing");
+        document.body.classList.remove("mobile-menu-open");
+
+        const handleTransitionEnd = (event) => {
+          if (event.propertyName !== "transform") return;
+
+          mobileNav.removeEventListener("transitionend", handleTransitionEnd);
+          finishClosingMobileMenu();
+        };
+
+        mobileNav.addEventListener("transitionend", handleTransitionEnd);
+        window.setTimeout(() => {
+          if (mobileMenu.classList.contains("is-closing")) finishClosingMobileMenu();
+        }, 500);
+      };
+
+      mobileMenuSummary.addEventListener("click", (event) => {
+        if (!mobileMenu.open) return;
+
+        event.preventDefault();
+        closeMobileMenu();
+      });
+
+      mobileMenu.addEventListener("toggle", () => {
+        const isOpen = mobileMenu.open;
+
+        document.body.classList.toggle("mobile-menu-open", isOpen);
+        mobileMenuSummary.setAttribute(
+          "aria-label",
+          isOpen ? "Close navigation menu" : "Open navigation menu",
+        );
+      });
+
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || !mobileMenu.open) return;
+
+        closeMobileMenu();
+        mobileMenuSummary.focus();
+      });
+
+      window.matchMedia("(width <= 620px)").addEventListener("change", (event) => {
+        if (event.matches) return;
+
+        mobileMenu.open = false;
+        mobileMenu.classList.remove("is-closing");
+        document.body.classList.remove("mobile-menu-open");
+      });
+    </script>
   </body>
 </html>

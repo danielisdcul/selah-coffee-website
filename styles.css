@@ -16,19 +16,19 @@
       3.3  Brand ................................................. Line 383
    4.0  Header ................................................ Line 424
       4.1  Navigation ............................................ Line 441
-   5.0  Main content .......................................... Line 470
-      5.1  Hero .................................................. Line 472
-      5.2  Visit ................................................. Line 528
-      5.3  What guides us ........................................ Line 573
-      5.4  Featured menu ......................................... Line 616
-      5.5  Name story ............................................ Line 685
-      5.6  Shop .................................................. Line 701
-   6.0  Footer ................................................ Line 754
-   7.0  Responsive rules ...................................... Line 816
-      7.1  Compact desktop and tablet ............................ Line 818
-      7.2  Tablet ................................................ Line 856
-      7.3  Mobile ................................................ Line 930
-   8.0  Accessibility ......................................... Line 1399
+   5.0  Main content .......................................... Line 483
+      5.1  Hero .................................................. Line 485
+      5.2  Visit ................................................. Line 541
+      5.3  What guides us ........................................ Line 586
+      5.4  Featured menu ......................................... Line 629
+      5.5  Name story ............................................ Line 698
+      5.6  Shop .................................................. Line 714
+   6.0  Footer ................................................ Line 767
+   7.0  Responsive rules ...................................... Line 829
+      7.1  Compact desktop and tablet ............................ Line 831
+      7.2  Tablet ................................................ Line 869
+      7.3  Mobile ................................................ Line 943
+   8.0  Accessibility ......................................... Line 1468
    ========================================================================== */
 
 /* 1.0 Foundation --------------------------------------------------------- */
@@ -458,6 +458,15 @@ em {
 #footer-bottom a {
   transition: opacity 0.18s;
 }
+#primary-nav a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition:
+    opacity 0.18s,
+    background-size 0.18s ease;
+}
 #primary-nav a:hover,
 #primary-nav a:focus-visible,
 .footer-links a:hover,
@@ -465,6 +474,10 @@ em {
 #footer-bottom a:hover,
 #footer-bottom a:focus-visible {
   opacity: 0.56;
+}
+#primary-nav a:hover,
+#primary-nav a:focus-visible {
+  background-size: 100% 1px;
 }
 
 /* 5.0 Main content ------------------------------------------------------- */
@@ -933,6 +946,11 @@ em {
   :root {
     --page-gutter: clamp(30px, 7vw, 48px);
   }
+  html,
+  body,
+  main {
+    overflow-x: clip;
+  }
   .section-title {
     max-width: 100%;
     white-space: normal;
@@ -978,10 +996,13 @@ em {
     max-width: 100%;
   }
   #site-header {
+    z-index: 20;
     border-bottom: 0;
     justify-content: space-between;
     height: 60px;
     padding: 0 18px;
+    position: sticky;
+    top: 0;
   }
   #site-header > a {
     top: 8px;
@@ -1021,15 +1042,17 @@ em {
     z-index: 10;
     display: block;
     position: absolute;
-    top: 20px;
-    right: 18px;
+    top: 8px;
+    right: 10px;
   }
   #mobile-menu summary {
     cursor: pointer;
     flex-direction: column;
-    justify-content: space-between;
-    width: 22px;
-    height: 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 44px;
+    height: 44px;
     list-style: none;
     display: flex;
   }
@@ -1041,25 +1064,71 @@ em {
     border-radius: 4px;
     width: 22px;
     height: 3px;
+    transition:
+      opacity 0.22s ease,
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  #mobile-menu[open] summary span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+  #mobile-menu[open] summary span:nth-child(2) {
+    opacity: 0;
+  }
+  #mobile-menu[open] summary span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
   }
   #mobile-nav {
     background: var(--paper);
     border-top: 1px solid #25211629;
     flex-direction: column;
-    gap: 18px;
-    width: 170px;
-    padding: 22px 30px 26px;
-    font-size: 16px;
+    justify-content: space-evenly;
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
+    padding: clamp(30px, 6vh, 60px) var(--page-gutter);
+    font-size: clamp(24px, 7vw, 32px);
     font-weight: 700;
-    line-height: 20px;
+    line-height: 1.2;
     display: flex;
-    position: absolute;
-    top: 28px;
-    right: -18px;
-    box-shadow: 0 14px 28px #2521161f;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: -15px 0 30px #25211614;
+    transform: translateX(0);
+    opacity: 1;
+    transition:
+      transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.3s ease;
+  }
+  #mobile-menu[open]:not(.is-closing) #mobile-nav {
+    animation: mobile-nav-in 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  #mobile-menu.is-closing #mobile-nav {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  #mobile-nav a {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    text-align: center;
+    display: flex;
+    transition: opacity 0.18s ease;
+  }
+  #mobile-nav a:hover,
+  #mobile-nav a:focus-visible {
+    opacity: 0.56;
   }
   #mobile-menu:not([open]) #mobile-nav {
     display: none;
+  }
+  body.mobile-menu-open {
+    overflow: hidden;
   }
   #hero {
     height: auto;
@@ -1405,6 +1474,18 @@ em {
   *,
   :before,
   :after {
+    animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes mobile-nav-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
