@@ -1128,7 +1128,7 @@ em {
     display: none;
   }
   body.mobile-menu-open {
-    overflow: hidden;
+    overflow: clip;
   }
   #hero {
     height: auto;
